@@ -142,8 +142,21 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       //Pass pageList and the mainPage route.
       body: FancyOnBoarding(
-        doneButtonText: "Done",
-        skipButtonText: "Skip",
+        doneButtonText: Text(
+          "Done",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 22.0,
+            fontWeight: FontWeight.w800),
+        ),
+        skipButtonText: Text(
+            "Skip",
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 18.0,
+                fontWeight: FontWeight.w800
+            ),
+        ),
         pageList: pageList,
         onDoneButtonPressed: () =>
             Navigator.of(context).pushReplacementNamed('/mainPage'),

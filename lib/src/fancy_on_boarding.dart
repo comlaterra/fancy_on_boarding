@@ -12,16 +12,16 @@ class FancyOnBoarding extends StatefulWidget {
   final List<PageModel> pageList;
   final VoidCallback onDoneButtonPressed;
   final VoidCallback onSkipButtonPressed;
-  final String doneButtonText;
-  final String skipButtonText;
+  final Text doneButtonText;
+  final Text skipButtonText;
   final bool showSkipButton;
 
   FancyOnBoarding({
     @required this.pageList,
     @required this.onDoneButtonPressed,
-    this.onSkipButtonPressed,
-    this.doneButtonText = "Done",
-    this.skipButtonText = "Skip",
+    @required this.onSkipButtonPressed,
+    @required this.doneButtonText,
+    @required this.skipButtonText,
     this.showSkipButton = true,
   }) : assert(pageList.length != 0 && onDoneButtonPressed != null);
 
@@ -86,13 +86,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
               shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0)),
               color: const Color(0x88FFFFFF),
-              child: Text(
-                widget.doneButtonText,
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.w800),
-              ),
+              child: widget.doneButtonText,
               onPressed:
                   _getOpacity() == 1.0 ? widget.onDoneButtonPressed : () {},
             ),
@@ -103,13 +97,7 @@ class _FancyOnBoardingState extends State<FancyOnBoarding>
                 top: MediaQuery.of(context).padding.top,
                 right: 0,
                 child: FlatButton(
-                  child: Text(
-                    widget.skipButtonText,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w800),
-                  ),
+                  child: widget.skipButtonText,
                   onPressed: widget.onSkipButtonPressed,
                 ),
               )
